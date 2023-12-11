@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonfy
+from flask import Flask, request, jsonify
 #pip install Flask
 
 #pip install flask-cors
@@ -76,7 +76,7 @@ class Mensaje:
         self.cursor = self.conn.cursor(dictionary=True)
 
     def enviar_mensaje(self, nombre, apellido, telefono, email, consulta):
-         sql = "INSERT INTO mensajes(nombre, apellido, telefono, email, consulta, fecha_envio) VALUES (%s, %s, %s, %s, %s, %s)"
+         sql = "INSERT INTO mensajes(nombre, apellido, telefono, email, mensaje, fecha_envio) VALUES (%s, %s, %s, %s, %s, %s)"
          fecha_envio = datetime.datetime.now()
          valores = (nombre, apellido, telefono, email, consulta, fecha_envio)
          self.cursor.execute(sql, valores)        
@@ -112,7 +112,7 @@ class Mensaje:
          return self.cursor.fetchone()
 
 
-mensaje = Mensaje(host='localhost', user='root', password='', database='clientes')
+mensaje = Mensaje(host='sveliz02.mysql.pythonanywhere-services.com', user='sveliz02', password='sxntxv970802', database='sveliz02$clientes')
 
 
 #-------------------------------------------
